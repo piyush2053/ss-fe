@@ -1,0 +1,21 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "school_name": "ABC School",
+        "username": "john_doe",
+        "password": "123456",
+        "mobile_number": "9876543210",
+        "address": "123 Street, City"
+      },
+      {
+        "id": 2,
+        "school_name": "Kendriya Vidyalaya Narsinghpur",
+        "username": "piyush",
+        "password": "admin@123",
+        "mobile_number": "8770162378",
+        "address": "123 Street, City"
+      }
+    ]
+  }
+  
