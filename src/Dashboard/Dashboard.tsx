@@ -31,7 +31,7 @@ console.log(user)
   return (
     <Layout>
       <Sider style={siderStyle} trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical text-white m-2 my-3 border border-white rounded p-5">aa</div>
+        <div className="demo-logo-vertical text-white m-2 my-3 border border-[#455A64] bg-[#546E7A] rounded p-5"></div>
         <Menu
           theme="dark"
           mode="inline"

@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { fetchThoughts } from "../../Services/api";
 import SplitText from "../TextAnimations/TextRise";
-import { Spin } from "antd";
+import { Spin, Button, Tooltip } from "antd";
 import "../../index.css";
-import { LoadingOutlined } from "@ant-design/icons";
+import Icon, { LoadingOutlined, ReloadOutlined } from "@ant-design/icons";
 
 export default function Thoughts() {
     const [thought, setThought] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const FetchThoughts = async () => {
+        setLoading(true);
         try {
             const res = await fetchThoughts();
             if (res) {
@@ -19,27 +21,27 @@ export default function Thoughts() {
         } catch (error) {
             console.error("Error fetching thoughts:", error);
         }
+        setLoading(false);
     };
 
     useEffect(() => {
-        const storedThought:any = localStorage.getItem("thought") || "";
-        const storedTimestamp:any= localStorage.getItem("thoughtTimestamp");
-        console.log(storedThought, '#######')
-        if (storedThought?.length > 0 && storedTimestamp) {
+        const storedThought = localStorage.getItem("thought") || "";
+        const storedTimestamp = localStorage.getItem("thoughtTimestamp");
+        
+        if (storedThought.length > 0 && storedTimestamp) {
             setThought(storedThought);
-        }else{
+        } else {
             FetchThoughts();
         }
-     
     }, []);
 
     return (
-        <div className="bg-grad-pp rounded-lg min-h-[150px] flex items-center justify-center p-3">
-            {thought?.length === 0 ? (
+        <div className="bg-grad-pp rounded-lg min-h-[150px] flex flex-col items-center justify-center p-3">
+            {loading ? (
                 <Spin size="large" indicator={<LoadingOutlined className="text-white" spin />} />
             ) : (
-                <div className="flex flex-col">
-                    <p className="text-lg text-white font-bold text-center">Thought of the Day</p>
+                <div className="flex flex-col items-center">
+                    <p className="text-lg text-white font-bold text-center">Thought of the Day <Tooltip title="Refresh Thought of the Day"><ReloadOutlined onClick={FetchThoughts} className="text-sm ml-2"/></Tooltip></p>
                     <SplitText
                         text={thought || "Stay positive and keep learning!"}
                         className="text-md text-white text-center z-90"
