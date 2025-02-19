@@ -2,5 +2,6 @@ export const API = {
     HEADERS: {
         "Content-Type": "application/json",
       },
-      POST:"POST"
+      POST:"POST",
+      GET: "GET"
 }

@@ -40,4 +40,13 @@ code {
   background-color: #F5F5F5;
 }
 
+.aurora-container {
+  width: 100%;
+  border-radius: 20px !important;
+  height: 100%;
+}
 
+
+.bg-grad-pp{
+  background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+}

@@ -6,6 +6,8 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import { SideItems } from './SideMenuItems';
 import { useUser } from '../Store/UserStore/UserStore';
+import Thoughts from '../Components/Thoughts/Thoughts';
+import HeaderTitle from './HeaderTitle/HeaderTitle';
 
 const { Header, Sider, Content } = Layout;
 
@@ -38,7 +40,7 @@ console.log(user)
         />
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 80 : 200 }}>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
+        <Header style={{ padding: 0, background: colorBgContainer }} className='flex'>
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -49,17 +51,18 @@ console.log(user)
               height: 64,
             }}
           />
+           <HeaderTitle/>
         </Header>
         <Content
           style={{
-            margin: '24px 16px',
-            padding: 24,
+            margin: '',
+            padding: 15,
             minHeight: 280,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}
         >
-          {/* Content //yahan main site chalegi  */}
+          <Thoughts/>
         </Content>
       </Layout>
     </Layout>
